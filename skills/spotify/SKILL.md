@@ -14,15 +14,19 @@ Control Spotify on macOS. No API key required.
 2) If the binary **does not support** the request (common for “play <song name>”), fall back to **AppleScript** using a Spotify URI (track/album/artist).
 3) Only use a **browser** as a last resort to discover a Spotify ID when no reliable non-browser lookup exists.
 
-### First step: check capabilities
+### Capability check (avoid token burn)
 
-Run this once per session (or when behavior seems weird) to see what subcommands/flags are available:
+Do **not** run `spotify --help` for every request.
+
+Only run it when:
+- this is the first Spotify command of the session **and** you don’t already know the installed CLI’s feature set, or
+- a command fails and you suspect the CLI variant changed.
+
+Otherwise, assume the common `shpotify` interface listed below.
 
 ```bash
 TERM=dumb spotify --help
 ```
-
-If your `spotify` supports searching or playing by query directly, use that.
 
 ## Commands (common shpotify)
 
