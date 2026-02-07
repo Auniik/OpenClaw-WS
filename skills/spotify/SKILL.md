@@ -25,40 +25,41 @@ Use `TERM=dumb` to avoid `tput` / `$TERM` issues in non-interactive runs.
 
 ```bash
 # Playback
-TERM=dumb spotify play
-TERM=dumb spotify pause
-TERM=dumb spotify next
-TERM=dumb spotify prev
-TERM=dumb spotify replay
-TERM=dumb spotify stop
+TERM=dumb spotify play                  # Resume playback where Spotify last left off
+TERM=dumb spotify play "<song name>"     # Find a song by name and play it (requires API creds)
+TERM=dumb spotify play album "<album>"   # Find an album by name and play it (requires API creds)
+TERM=dumb spotify play artist "<artist>" # Find an artist by name and play it (requires API creds)
+TERM=dumb spotify play list "<playlist>" # Find a playlist by name and play it (requires API creds)
+TERM=dumb spotify play uri "<uri>"       # Play from a specific Spotify URI (e.g. spotify:track:<id>)
+
+TERM=dumb spotify next                  # Skip to next song
+TERM=dumb spotify prev                  # Go to previous song
+TERM=dumb spotify replay                # Restart current track from beginning
+TERM=dumb spotify pos <seconds>         # Jump to position in seconds
+TERM=dumb spotify pause                 # Pause (or resume) playback
+TERM=dumb spotify stop                  # Stop playback
+TERM=dumb spotify quit                  # Stop playback and quit Spotify
 
 # Volume
-TERM=dumb spotify vol up
-TERM=dumb spotify vol down
-TERM=dumb spotify vol <0-100>
-TERM=dumb spotify vol show
+TERM=dumb spotify vol up                # +10% volume
+TERM=dumb spotify vol down              # -10% volume
+TERM=dumb spotify vol <0-100>           # Set volume
+TERM=dumb spotify vol show              # Show current volume
 
 # Status
-TERM=dumb spotify status
-TERM=dumb spotify status track
-TERM=dumb spotify status artist
-TERM=dumb spotify status album
+TERM=dumb spotify status                # Show current player status
+TERM=dumb spotify status track          # Show currently playing track
+TERM=dumb spotify status artist         # Show currently playing artist
+TERM=dumb spotify status album          # Show currently playing album
 
 # Share
-TERM=dumb spotify share
-TERM=dumb spotify share url
-TERM=dumb spotify share uri
+TERM=dumb spotify share                 # Show current song's Spotify URL + URI
+TERM=dumb spotify share url             # Show URL (and copy to clipboard)
+TERM=dumb spotify share uri             # Show URI (and copy to clipboard)
 
 # Toggles
-TERM=dumb spotify toggle shuffle
-TERM=dumb spotify toggle repeat
-
-# Search/play by name (requires API creds)
-TERM=dumb spotify play "<song>"
-TERM=dumb spotify play album "<album>"
-TERM=dumb spotify play artist "<artist>"
-TERM=dumb spotify play list "<playlist>"
-TERM=dumb spotify play uri "spotify:track:<id>"
+TERM=dumb spotify toggle shuffle        # Toggle shuffle
+TERM=dumb spotify toggle repeat         # Toggle repeat
 ```
 
 ## Fallback: play a specific Spotify URI (AppleScript)
