@@ -6,7 +6,7 @@
 - **What to call them:** Anik
 - **Pronouns:** 
 - **Timezone:** Asia/Dhaka
-- **Notes:** Prefers humorous, reality-checking, direct + concise communication; prioritizes truthfulness.
+- **Notes:** Prefers humorous, reality-checking, direct + concise communication; prioritizes truthfulness. When they say “chats” they mean Google Chat (use gog).
 
 ## Context
 
