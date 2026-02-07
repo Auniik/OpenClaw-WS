@@ -6,149 +6,77 @@ metadata: {"clawdbot":{"emoji":"🎵","requires":{"bins":["spotify"],"os":"darwi
 
 # Spotify CLI
 
-Control Spotify on macOS. No API key required.
+Control Spotify on macOS.
 
-## Priority order (important)
+- **Basic controls (play/pause/next/prev/volume/status):** no API key needed.
+- **Search/play by name:** requires Spotify API creds in `/Users/anik/.shpotify.cfg` (shpotify).
 
-1) **Prefer the `spotify` binary for anything it can do** (play/pause/next/prev/volume/status, and *any* search/play-by-name features if your installed `spotify` supports them).
-2) If the binary **does not support** the request (common for “play <song name>”), fall back to **AppleScript** using a Spotify URI (track/album/artist).
-3) Only use a **browser** as a last resort to discover a Spotify ID when no reliable non-browser lookup exists.
+## Priority order
 
-### Capability check (avoid token burn)
+1) Use the `spotify` CLI for everything it supports.
+2) If you must play a specific Spotify URI, use AppleScript.
+3) Use the browser only as a last resort to discover IDs.
 
-Do **not** run `spotify --help` for every request.
+*(Don’t run `spotify --help` every time; only when debugging or the CLI variant is unknown.)*
 
-Only run it when:
-- this is the first Spotify command of the session **and** you don’t already know the installed CLI’s feature set, or
-- a command fails and you suspect the CLI variant changed.
-
-Otherwise, assume the common `shpotify` interface listed below.
-
-```bash
-TERM=dumb spotify --help
-```
-
-## Commands (your installed `spotify` / shpotify)
+## Commands (`spotify` / shpotify)
 
 Use `TERM=dumb` to avoid `tput` / `$TERM` issues in non-interactive runs.
 
-### Quick cheat-sheet
-
 ```bash
-TERM=dumb spotify play                 # Resume
-TERM=dumb spotify play "<song>"         # Search + play track by name (requires API creds)
-TERM=dumb spotify play album "<album>"  # Search + play album (requires API creds)
-TERM=dumb spotify play artist "<artist>"# Search + play artist (requires API creds)
-TERM=dumb spotify play list "<playlist>"# Search + play playlist (requires API creds)
-TERM=dumb spotify play uri "spotify:track:<id>"  # Play a specific URI
-
+# Playback
+TERM=dumb spotify play
+TERM=dumb spotify pause
 TERM=dumb spotify next
 TERM=dumb spotify prev
 TERM=dumb spotify replay
-TERM=dumb spotify pos <seconds>
-TERM=dumb spotify pause
 TERM=dumb spotify stop
-TERM=dumb spotify quit
 
+# Volume
 TERM=dumb spotify vol up
 TERM=dumb spotify vol down
 TERM=dumb spotify vol <0-100>
 TERM=dumb spotify vol show
 
+# Status
 TERM=dumb spotify status
+TERM=dumb spotify status track
 TERM=dumb spotify status artist
 TERM=dumb spotify status album
-TERM=dumb spotify status track
 
+# Share
 TERM=dumb spotify share
 TERM=dumb spotify share url
 TERM=dumb spotify share uri
 
+# Toggles
 TERM=dumb spotify toggle shuffle
 TERM=dumb spotify toggle repeat
+
+# Search/play by name (requires API creds)
+TERM=dumb spotify play "<song>"
+TERM=dumb spotify play album "<album>"
+TERM=dumb spotify play artist "<artist>"
+TERM=dumb spotify play list "<playlist>"
+TERM=dumb spotify play uri "spotify:track:<id>"
 ```
 
-### Full `spotify --help` output (captured)
+## Fallback: play a specific Spotify URI (AppleScript)
 
-(Kept here so the agent has the interface at a glance; don’t re-run help unless debugging.)
+Use this when:
+- search/play-by-name isn’t available (or creds aren’t configured), or
+- you already have a Spotify URL/ID.
 
-```text
-Usage:
+1) Get the ID from a Spotify URL (prefer `web_search`; use browser only if needed):
+- `open.spotify.com/track/<ID>` → `<ID>`
+- `open.spotify.com/album/<ID>` → `<ID>`
+- `open.spotify.com/artist/<ID>` → `<ID>`
 
-  spotify <command>
-
-Commands:
-
-  play                         # Resumes playback where Spotify last left off.
-  play <song name>             # Finds a song by name and plays it.
-  play album <album name>      # Finds an album by name and plays it.
-  play artist <artist name>    # Finds an artist by name and plays it.
-  play list <playlist name>    # Finds a playlist by name and plays it.
-  play uri <uri>               # Play songs from specific uri.
-
-  next                         # Skips to the next song in a playlist.
-  prev                         # Returns to the previous song in a playlist.
-  replay                       # Replays the current track from the beginning.
-  pos <time>                   # Jumps to a time (in secs) in the current song.
-  pause                        # Pauses (or resumes) Spotify playback.
-  stop                         # Stops playback.
-  quit                         # Stops playback and quits Spotify.
-
-  vol up                       # Increases the volume by 10%.
-  vol down                     # Decreases the volume by 10%.
-  vol <amount>                 # Sets the volume to an amount between 0 and 100.
-  vol [show]                   # Shows the current Spotify volume.
-
-  status                       # Shows the current player status.
-  status artist                # Shows the currently playing artist.
-  status album                 # Shows the currently playing album.
-  status track                 # Shows the currently playing track.
-
-  share                        # Displays the current song's Spotify URL and URI.
-  share url                    # Displays the current song's Spotify URL and copies it to the clipboard.
-  share uri                    # Displays the current song's Spotify URI and copies it to the clipboard.
-
-  toggle shuffle               # Toggles shuffle playback mode.
-  toggle repeat                # Toggles repeat playback mode.
-
-Connecting to Spotify's API:
-
-  This command line application needs to connect to Spotify's API in order to
-  find music by name.
-
-  To get this to work, create an app at:
-  https://developer.spotify.com/my-applications/#!/applications/create
-
-  Then set creds in:
-  /Users/anik/.shpotify.cfg
-
-  Example:
-  CLIENT_ID="abc01de2fghijk345lmnop"
-  CLIENT_SECRET="qr6stu789vwxyz"
-```
-
-## Play by Name (fallback)
-
-If the `spotify` binary does **not** support search/play-by-name, do this:
-
-1) Find a Spotify URL (prefer non-browser lookups first):
-   - Try `web_search` for a direct Spotify URL.
-   - If no direct URL is found, **then** use the browser to open Spotify search and copy the track/album/artist link.
-2) Extract the ID from the URL:
-   - `open.spotify.com/track/<ID>` → `<ID>`
-   - `open.spotify.com/album/<ID>` → `<ID>`
-   - `open.spotify.com/artist/<ID>` → `<ID>`
-3) Play with AppleScript:
+2) Play via AppleScript:
 
 ```bash
-# Artist
-osascript -e 'tell application "Spotify" to play track "spotify:artist:4tZwfgrHOc3mvqYlEYSvVi"'
-
-# Album
-osascript -e 'tell application "Spotify" to play track "spotify:album:4m2880jivSbbyEGAKfITCa"'
-
-# Track
-osascript -e 'tell application "Spotify" to play track "spotify:track:2KHRENHQzTIQ001nlP9Gdc"'
+osascript -e 'tell application "Spotify" to play track "spotify:track:<ID>"'
+# or: spotify:album:<ID> / spotify:artist:<ID>
 ```
 
 ## Notes
