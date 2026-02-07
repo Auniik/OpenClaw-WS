@@ -28,22 +28,103 @@ Otherwise, assume the common `shpotify` interface listed below.
 TERM=dumb spotify --help
 ```
 
-## Commands (common shpotify)
+## Commands (your installed `spotify` / shpotify)
 
 Use `TERM=dumb` to avoid `tput` / `$TERM` issues in non-interactive runs.
 
+### Quick cheat-sheet
+
 ```bash
-TERM=dumb spotify play           # Resume
-TERM=dumb spotify pause          # Pause/toggle
-TERM=dumb spotify next           # Next track
-TERM=dumb spotify prev           # Previous track
-TERM=dumb spotify stop           # Stop
+TERM=dumb spotify play                 # Resume
+TERM=dumb spotify play "<song>"         # Search + play track by name (requires API creds)
+TERM=dumb spotify play album "<album>"  # Search + play album (requires API creds)
+TERM=dumb spotify play artist "<artist>"# Search + play artist (requires API creds)
+TERM=dumb spotify play list "<playlist>"# Search + play playlist (requires API creds)
+TERM=dumb spotify play uri "spotify:track:<id>"  # Play a specific URI
 
-TERM=dumb spotify vol up         # +10%
-TERM=dumb spotify vol down       # -10%
-TERM=dumb spotify vol 50         # Set to 50%
+TERM=dumb spotify next
+TERM=dumb spotify prev
+TERM=dumb spotify replay
+TERM=dumb spotify pos <seconds>
+TERM=dumb spotify pause
+TERM=dumb spotify stop
+TERM=dumb spotify quit
 
-TERM=dumb spotify status         # Current track info
+TERM=dumb spotify vol up
+TERM=dumb spotify vol down
+TERM=dumb spotify vol <0-100>
+TERM=dumb spotify vol show
+
+TERM=dumb spotify status
+TERM=dumb spotify status artist
+TERM=dumb spotify status album
+TERM=dumb spotify status track
+
+TERM=dumb spotify share
+TERM=dumb spotify share url
+TERM=dumb spotify share uri
+
+TERM=dumb spotify toggle shuffle
+TERM=dumb spotify toggle repeat
+```
+
+### Full `spotify --help` output (captured)
+
+(Kept here so the agent has the interface at a glance; don’t re-run help unless debugging.)
+
+```text
+Usage:
+
+  spotify <command>
+
+Commands:
+
+  play                         # Resumes playback where Spotify last left off.
+  play <song name>             # Finds a song by name and plays it.
+  play album <album name>      # Finds an album by name and plays it.
+  play artist <artist name>    # Finds an artist by name and plays it.
+  play list <playlist name>    # Finds a playlist by name and plays it.
+  play uri <uri>               # Play songs from specific uri.
+
+  next                         # Skips to the next song in a playlist.
+  prev                         # Returns to the previous song in a playlist.
+  replay                       # Replays the current track from the beginning.
+  pos <time>                   # Jumps to a time (in secs) in the current song.
+  pause                        # Pauses (or resumes) Spotify playback.
+  stop                         # Stops playback.
+  quit                         # Stops playback and quits Spotify.
+
+  vol up                       # Increases the volume by 10%.
+  vol down                     # Decreases the volume by 10%.
+  vol <amount>                 # Sets the volume to an amount between 0 and 100.
+  vol [show]                   # Shows the current Spotify volume.
+
+  status                       # Shows the current player status.
+  status artist                # Shows the currently playing artist.
+  status album                 # Shows the currently playing album.
+  status track                 # Shows the currently playing track.
+
+  share                        # Displays the current song's Spotify URL and URI.
+  share url                    # Displays the current song's Spotify URL and copies it to the clipboard.
+  share uri                    # Displays the current song's Spotify URI and copies it to the clipboard.
+
+  toggle shuffle               # Toggles shuffle playback mode.
+  toggle repeat                # Toggles repeat playback mode.
+
+Connecting to Spotify's API:
+
+  This command line application needs to connect to Spotify's API in order to
+  find music by name.
+
+  To get this to work, create an app at:
+  https://developer.spotify.com/my-applications/#!/applications/create
+
+  Then set creds in:
+  /Users/anik/.shpotify.cfg
+
+  Example:
+  CLIENT_ID="abc01de2fghijk345lmnop"
+  CLIENT_SECRET="qr6stu789vwxyz"
 ```
 
 ## Play by Name (fallback)
