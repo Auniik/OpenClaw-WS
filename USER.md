@@ -2,9 +2,9 @@
 
 *Learn about the person you're helping. Update this as you go.*
 
-- **Name:** Anik
+- **Name:** Anik Datta
 - **What to call them:** Anik
-- **Pronouns:** 
+- **Pronouns:** he/his
 - **Timezone:** Asia/Dhaka
 - **Notes:** Prefers humorous, reality-checking, direct + concise communication; prioritizes truthfulness. When they say “chats” they mean Google Chat (use gog).
 

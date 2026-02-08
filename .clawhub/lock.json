@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "bird": {
+      "version": "1.0.0",
+      "installedAt": 1770423693854
+    },
+    "jiraandconfluence": {
+      "version": "1.0.0",
+      "installedAt": 1770423701435
+    },
+    "spotify": {
+      "version": "1.0.0",
+      "installedAt": 1770423712978
+    },
+    "mcporter": {
+      "version": "1.0.0",
+      "installedAt": 1770423748477
+    },
+    "gifgrep": {
+      "version": "1.0.1",
+      "installedAt": 1770423756449
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1770424130718
+    }
+  }
+}
