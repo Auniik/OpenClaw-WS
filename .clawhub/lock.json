@@ -24,6 +24,10 @@
     "gog": {
       "version": "1.0.0",
       "installedAt": 1770424130718
+    },
+    "coda-ai": {
+      "version": "0.2.1",
+      "installedAt": 1770765861978
     }
   }
 }

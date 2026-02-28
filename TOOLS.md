@@ -1,40 +1,27 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Status/Standup/Follow-up trigger (IMPORTANT)
+If Anik says any of these:
+- `standup followup`
+- `team status`
+- `today standup`
+- `tomorrow standup`
+- `followups`
+- `last day/weeks status and next followups`
 
-## What Goes Here
+Treat it as a full project follow-up / status command with these defaults:
 
-Things like:
+1. **Time window:** Only Anik's work hours (**2:00 PM–11:00 PM, Asia/Dhaka**)
+2. **Scope:** Only **WisdomWear-related** items
+3. **Sources to check every time:**
+   - Google Calendar (meetings)
+   - Google Chat (WisdomWear spaces + relevant latest DMs, Map space, dm's display names from Contacts (profile/WORK.md))
+   - Jira blockers, closest due date tasks of WisdomWear team
+   - Meeting transcripts/notes (Gemini/Docs/linked notes)
+   - Project-related email threads
+4. **Output:** concise, actionable, with raised/asked by, responsible person, status and reference (link/id/source)
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
-
-## Examples
-
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+## Priority rules
+- Prioritize **blockers, dependencies, deadlines, decisions needed**
+- Skip noise/non-actionable updates
+- If no meaningful updates: say so directly

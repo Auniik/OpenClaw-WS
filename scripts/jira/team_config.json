@@ -1,0 +1,54 @@
+{
+  "jira": {
+    "project": "WW"
+  },
+  "pm": {
+    "name": "Sanjan Mahjabin Farin",
+    "email": "sanjan.farin@portonics.com",
+    "jira_assignee": "Sanjan Mahjabin Farin",
+    "enabled": true
+  },
+  "members": [
+    {
+      "name": "Rakib Hosen",
+      "email": "rakib.hosen@portonics.com",
+      "jira_assignee": "Rakib Hosen",
+      "enabled": true
+    },
+    {
+      "name": "Anindya Duti Dhar",
+      "email": "anindya.duti.dhar@portonics.com",
+      "jira_assignee": "Anindya Duti Dhar",
+      "enabled": true
+    },
+    {
+      "name": "Md. Enamul Haque",
+      "email": "md.enamul.haque@portonics.com",
+      "jira_assignee": "Md. Enamul Haque",
+      "enabled": true
+    },
+    {
+      "name": "Syed Faiyaz Rabbi",
+      "email": "syed.faiyaz.rabbi@portonics.com",
+      "jira_assignee": "Syed Faiyaz Rabbi",
+      "enabled": true
+    },
+    {
+      "name": "Md. Ekramul Islam",
+      "email": "ekramul.islam@portonics.com",
+      "jira_assignee": "Md. Ekramul Islam",
+      "enabled": true
+    }
+  ],
+  "worklog_reminder": {
+    "status": "In Progress",
+    "max_tickets": 15
+  },
+  "daily_status_digest": {
+    "max_items": 8,
+    "statuses": {
+      "in_progress": "In Progress",
+      "todo": "To Do"
+    }
+  }
+}
