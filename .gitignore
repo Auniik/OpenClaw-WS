@@ -1,2 +1,5 @@
 profile/*.md
 tmp_whisper
+state/dse-trading/*
+/__pycache__/
+*.pyc
